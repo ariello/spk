@@ -1,6 +1,10 @@
 <?php
 //echo'<pre>';die(var_dump($_SERVER['HTTP_HOST'],explode('/',$_SERVER['PHP_SELF'])));
 if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
+    session_start();
+    if (!isset($_SESSION['user'])){
+        header("location:index.php");
+    }
     // Include the main TCPDF library (search for installation path).
     require_once('../library/tcpdf.php');
 
