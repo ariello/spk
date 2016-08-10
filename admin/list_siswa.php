@@ -324,6 +324,7 @@ if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
     $uri = explode('/',  $_SERVER['PHP_SELF']);
 }
 ?>
+
 <script>
     $(document).ready(function(){
         var httpHost = 'http://<?php echo $_SERVER['HTTP_HOST'];?>/';
