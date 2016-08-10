@@ -136,6 +136,7 @@ if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
     $i = 1;
     $detail='';
     $skor = array();
+    
     while($row = mysql_fetch_assoc($query)) {
         $skor['ipa'] = 0;
         $skor['ips'] = 0;
