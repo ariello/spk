@@ -1,7 +1,7 @@
 <?php
 set_time_limit(0);
 
-if ($_REQUEST['button'] == 'cetak') {
+if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
     // Include the main TCPDF library (search for installation path).
     require_once('../library/tcpdf.php');
 
@@ -236,13 +236,13 @@ if ($_REQUEST['button'] == 'cetak') {
                                 <div class="form-group">
                                     <label for="namesiswa" class="col-lg-4 control-label medium-size" style="text-align:left">Nomor Test </label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="namesiswa" name="nis" value="<?php echo $_REQUEST['nis']; ?>" />
+                                        <input type="text" class="form-control" id="namesiswa" name="nis" value="<?php echo (isset($_REQUEST['nis']) ? $_REQUEST['nis'] : ''); ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="namesiswa" class="col-lg-4 control-label medium-size" style="text-align:left">Nama Siswa </label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="namesiswa" name="nama" value="<?php echo $_REQUEST['nama']; ?>"/>
+                                        <input type="text" class="form-control" id="namesiswa" name="nama" value="<?php echo (isset($_REQUEST['nama']) ? $_REQUEST['nama'] : ''); ?>"/>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-danger medium-size">Cari</button>
@@ -341,6 +341,7 @@ if ($_REQUEST['button'] == 'cetak') {
                         } else {
                             $pagePrev = $pageCurrent -1;
                             $hrefPrev = "list_laporan.php?page=$pagePrev$nisGet$namaGet";
+                            $classDisabledPrev = '';
                         }
                         
                         if ($totalPage == 1 || $pageCurrent == $totalPage) {
@@ -348,6 +349,7 @@ if ($_REQUEST['button'] == 'cetak') {
                         } else {
                             $pageNext = $pageCurrent+1;
                             $hrefNext = "list_laporan.php?page=$pageNext$nisGet$namaGet";
+                            $classDisabledNext = '';
                         }
                     ?>
                     <li <?php echo $classDisabledPrev;?>><a href="<?php echo $hrefPrev;?>" aria-label="Previous"><span aria-hidden="true">&laquo</span></a></li>
@@ -414,9 +416,11 @@ if ($_REQUEST['button'] == 'cetak') {
                                 ";
                         $query = mysql_query($strQuery);
                         $i = ($pageCurrent*$limit) - ($limit-1);
+                        $skor = array();
                         while($row = mysql_fetch_assoc($query)) {
                                 //echo'<pre>';die(var_dump($row));
-                            $skor = array();
+                            $skor['ipa'] = 0;
+                            $skor['ips'] = 0;
                             if ($row['rekomendasi_minat'] == 'IPA') {
                                 $skor['ipa'] = 35;
                             } else if ($row['rekomendasi_minat'] == 'IPS') {
