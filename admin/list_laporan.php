@@ -131,7 +131,7 @@ if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
                 $leftJoin
                 $where
                 ORDER BY siswa.nis ASC";
-    //die(var_dump($strQuery));
+        
     $query = mysql_query($strQuery);
     $i = 1;
     $detail='';
