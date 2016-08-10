@@ -135,9 +135,10 @@ if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
     $query = mysql_query($strQuery);
     $i = 1;
     $detail='';
+    $skor = array();
     while($row = mysql_fetch_assoc($query)) {
-        
-        $skor = array();
+        $skor['ipa'] = 0;
+        $skor['ips'] = 0;
         if ($row['rekomendasi_minat'] == 'IPA') {
             $skor['ipa'] = 35;
         } else if ($row['rekomendasi_minat'] == 'IPS') {
