@@ -155,7 +155,7 @@ if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
                                 <div class="form-group">
                                     <label for="namesiswa" class="col-lg-4 control-label medium-size" style="text-align:left">Nomor Test </label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="namesiswa" name="nis" value="<?php echo (isset($_REQUEST['nis']) ? $_REQUEST['nis'] : ''); ?>" />
+                                        <input type="text" class="form-control" id="nissiswa" name="nis" value="<?php echo (isset($_REQUEST['nis']) ? $_REQUEST['nis'] : ''); ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -198,7 +198,7 @@ if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
                 $queryCount = mysql_query($strCount);
                 $rowCount = mysql_fetch_row($queryCount);
                 $totalData = $rowCount[0];
-                $limit = 5;
+                $limit = 3;
                 $totalPage = ceil($totalData/$limit);
                 $pageCurrent = (!empty($_REQUEST['page']) ? $_REQUEST['page'] : 1);
                 $pageQuery = ($pageCurrent*$limit) - $limit;
