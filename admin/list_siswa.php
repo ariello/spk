@@ -1,6 +1,6 @@
 <?php
 //echo'<pre>';die(var_dump($_SERVER['HTTP_HOST'],explode('/',$_SERVER['PHP_SELF'])));
-if ($_REQUEST['button'] == 'cetak') {
+if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
     // Include the main TCPDF library (search for installation path).
     require_once('../library/tcpdf.php');
 
@@ -133,10 +133,10 @@ if ($_REQUEST['button'] == 'cetak') {
 
     }
     .small-size {
-        font-size : 10px;
+        font-size : 12px;
     }
     .medium-size {
-        font-size : 12px;
+        font-size : 14px;
     }
     .delete-siswa {
         margin-left:3px;
@@ -151,17 +151,17 @@ if ($_REQUEST['button'] == 'cetak') {
                                 <h3 class="panel-title medium-size">Cari Data</h3>
                         </div>
                         <div class="panel-body">
-                            <form id="searchSiswa" method="get" action="<?php $SERVER['PHPSELF']; ?>" class="form-horizontal">
+                            <form id="searchSiswa" method="get" action="list_siswa.php" class="form-horizontal">
                                 <div class="form-group">
                                     <label for="namesiswa" class="col-lg-4 control-label medium-size" style="text-align:left">Nomor Test </label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="namesiswa" name="nis" value="<?php echo $_REQUEST['nis']; ?>" />
+                                        <input type="text" class="form-control" id="namesiswa" name="nis" value="<?php echo (isset($_REQUEST['nis']) ? $_REQUEST['nis'] : ''); ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="namesiswa" class="col-lg-4 control-label medium-size" style="text-align:left">Nama Siswa </label>
                                     <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="namesiswa" name="nama" value="<?php echo $_REQUEST['nama']; ?>"/>
+                                        <input type="text" class="form-control" id="namesiswa" name="nama" value="<?php echo (isset($_REQUEST['nama']) ? $_REQUEST['nama'] : ''); ?>"/>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-danger medium-size">Cari</button>
@@ -211,6 +211,7 @@ if ($_REQUEST['button'] == 'cetak') {
                         } else {
                             $pagePrev = $pageCurrent -1;
                             $hrefPrev = "list_siswa.php?page=$pagePrev$nisGet$namaGet";
+                            $classDisabledPrev = '';
                         }
                         
                         if ($totalPage == 1 || $pageCurrent == $totalPage) {
@@ -218,6 +219,7 @@ if ($_REQUEST['button'] == 'cetak') {
                         } else {
                             $pageNext = $pageCurrent+1;
                             $hrefNext = "list_siswa.php?page=$pageNext$nisGet$namaGet";
+                            $classDisabledNext = '';
                         }
                     ?>
                     <li <?php echo $classDisabledPrev;?>><a href="<?php echo $hrefPrev;?>" aria-label="Previous"><span aria-hidden="true">&laquo</span></a></li>

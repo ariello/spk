@@ -217,10 +217,10 @@ if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
 
     }
     .small-size {
-        font-size : 10px;
+        font-size : 12px;
     }
     .medium-size {
-        font-size : 12px;
+        font-size : 14px;
     }
 </style>
     <div class="row">
@@ -328,7 +328,7 @@ if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
                 $rowCount = mysql_fetch_row($queryCount);
                 
                 $totalData = $rowCount[0];
-                $limit = 5;
+                $limit = 3;
                 $totalPage = ceil($totalData/$limit);
                 $pageCurrent = (!empty($_REQUEST['page']) ? $_REQUEST['page'] : 1);
                 $pageQuery = ($pageCurrent*$limit) - $limit;
