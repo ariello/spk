@@ -1,9 +1,19 @@
-<?
+<?php
 session_start();
 if(!isset($_SESSION['user'])){
 	header("location:index.php");
 }
-
+$uri = explode('/',  $_SERVER['PHP_SELF']);
+if (isset($_SESSION['have_minat'])) {
+?>
+<script>
+    var httpHost = 'http://<?php echo $_SERVER['HTTP_HOST'];?>/';
+    var uri = '<?php echo $uri[1].'/'.$uri[2].'/';?>';
+    alert('Anda telah megikuti kuis peminatan');
+    location.href = httpHost+uri+'home.php';
+</script>
+<?php
+}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 
@@ -26,7 +36,10 @@ if(!isset($_SESSION['user'])){
 </head>
 
 <body topmargin="0" leftmargin="0">
-<?
+    <a href='logout.php' style="text-decoration:none;color:black">
+<button style="position:absolute;top:32%;left:72%;cursor:pointer">Logout</button>
+</a>
+<?php
 	$status = (isset($_GET['status']) ? $_GET['status'] : '');
 		$preIPA=$_GET['ipa'];
 	$preIPS=$_GET['ips'];
@@ -50,7 +63,7 @@ if(!isset($_SESSION['user'])){
 			<tr>
 				<td width="40px" align="right" >&nbsp;</td>
 				<td class="style4">
-				<?
+				<?php
 				function ahp()
 				{
 					$username=$_SESSION['user'];
@@ -141,9 +154,11 @@ if(!isset($_SESSION['user'])){
 				maka Anda cocok untuk melanjutkan sekolah dengan jurusan<br/><br/>
 				
 				<font size=6> 
-				<? $max = ahp();
-				   echo $max;
-				?></font><br/><br/>
+				<?php 
+                                    $max = ahp();
+                                    echo $max;
+				?>
+                                </font><br/><br/>
 				
 				Terima kasih sudah menggunakan SPK ini.<br/><br/>
 				<p align="center">
