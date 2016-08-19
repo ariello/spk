@@ -1,6 +1,5 @@
 <?php
 set_time_limit(0);
-
 if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
     session_start();
     if (!isset($_SESSION['user'])){
@@ -18,7 +17,7 @@ if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
     //$pdf->SetTitle('TCPDF Example 006');
     //$pdf->SetSubject('TCPDF Tutorial');
     //$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-
+    
     // set default header data
     $headerString = 'TAHUN AJARAN '.date('Y').'-'.(date('Y') + 1);
     $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'PENJURUSAN SMAN 3 PURWAKARTA' , $headerString);
