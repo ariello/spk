@@ -20,7 +20,8 @@ if (isset($_REQUEST['button']) && $_REQUEST['button'] == 'cetak') {
     //$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
     // set default header data
-    $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'LAPORAN SISWA', '');
+    $headerString = 'TAHUN AJARAN '.date('Y').'-'.(date('Y') + 1);
+    $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'PENJURUSAN SMAN 3 PURWAKARTA' , $headerString);
 
     // set header and footer fonts
     $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
