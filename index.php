@@ -57,8 +57,8 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li>
-                        <a href="#">Profil</a>
-                        <a href="#">Tentang</a>
+                        <a href="profile.php">Profil</a>
+                        <a href="about.php">Tentang</a>
                     </li>
                   </ul>
                 </li>
